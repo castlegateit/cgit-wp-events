@@ -328,14 +328,14 @@ class Cgit_event_calendar {
 
 
         // Clone the current month DateTime for use in building our query
-        $start = clone $current;
-        $end = clone $current;
+        $query_start = clone $current;
+        $query_end = clone $current;
 
         // Get the first day of next month
-        $end->modify('first day of next month');
+        $query_end->modify('first day of next month');
 
         // Get the first day of this month
-        $start->modify('first day of this month');
+        $query_start->modify('first day of this month');
 
 
         global $wpdb;
@@ -364,15 +364,15 @@ class Cgit_event_calendar {
 
                 (
                     (
-                        start_meta.meta_value < " . $end->format('U') ."
+                        start_meta.meta_value < " . $query_end->format('U') ."
                         AND
-                        start_meta.meta_value >= " . $start->format('U') ."
+                        start_meta.meta_value >= " . $query_start->format('U') ."
                     )
                     OR
                     (
-                        start_meta.meta_value < " . $start->format('U') . "
+                        start_meta.meta_value < " . $query_start->format('U') . "
                         AND
-                        end_meta.meta_value>= " . $start->format('U') . "
+                        end_meta.meta_value>= " . $query_start->format('U') . "
                     )
                 )
 
