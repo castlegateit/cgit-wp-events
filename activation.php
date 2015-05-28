@@ -64,7 +64,7 @@ function cgit_wp_events_activate() {
  * @return boolean
  */
 function cgit_wp_events_check_cmb() {
-    return is_plugin_active('custom-meta-boxes/custom-meta-boxes.php');
+    return is_plugin_active('Custom-Meta-Boxes/custom-meta-boxes.php');
 }
 
 
