@@ -3,19 +3,24 @@
 /**
  * Enqueue the calendar AJAX javascript
  */
-wp_enqueue_script('cgit-events-calendar', plugins_url('/js/calendar.js', __FILE__ ), array('jquery'));
+function cgit_events_scripts_init() {
 
+    wp_enqueue_script('cgit-events-calendar', plugins_url('/js/calendar.js', __FILE__ ), array('jquery'));
 
-/**
- * Define the AJAX handler
- */
-wp_localize_script(
-    'cgit-events-calendar',
-    'ajax_object',
-    array(
-        'ajax_url' => admin_url('admin-ajax.php')
-    )
-);
+    /**
+     * Define the AJAX handler
+     */
+    wp_localize_script(
+        'cgit-events-calendar',
+        'ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        )
+    );
+
+}
+
+add_action('wp_enqueue_scripts', 'cgit_events_scripts_init');
 
 
 /**
@@ -42,4 +47,3 @@ function cgit_events_calendar_callback() {
  */
 add_action('wp_ajax_cgit_events_calendar', 'cgit_events_calendar_callback');
 add_action('wp_ajax_nopriv_cgit_events_calendar', 'cgit_events_calendar_callback');
-
