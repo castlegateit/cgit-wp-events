@@ -16,14 +16,14 @@ function cgit_wp_events_activate() {
      */
     if (!cgit_wp_events_check_cmb()) {
 
-        $message = 'This plugin requires the <code>custom meta boxes</code> ';
+        $message = 'This plugin requires the <code>Custom-Meta-Boxes</code> ';
         $message.= ' plugin. Please ensure you\'ve installed ';
         $message.= 'it in the correct location: <code>';
-        $message.= 'plugins/custom-meta-boxes</code><br /><br />When ';
+        $message.= 'plugins/Custom-Meta-Boxes</code><br /><br />When ';
         $message.= 'download via GitHub\'s web interface, the installation ';
         $message.= 'directory may be <code>plugins/Custom-Meta-Boxes-master';
         $message.=  '</code>. Be sure to remove <code>master</code> from the ';
-        $message.= 'directory and convert to lower case.<br /><br />Download ';
+        $message.= 'directory.<br /><br />Download ';
         $message.= 'from <a target="_blank" href="https://github.com/humanmade';
         $message.= '/Custom-Meta-Boxes">GitHub</a>';
         wp_die($message);
