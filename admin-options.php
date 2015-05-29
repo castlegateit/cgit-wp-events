@@ -72,7 +72,8 @@ function cgit_wp_events_register_settings() {
 function cgit_wp_events_add_settings_page() {
 
     // Add page
-    add_menu_page(
+    add_submenu_page(
+        'options-general.php',
         'Event Settings',
         'Event Settings',
         'manage_options',
