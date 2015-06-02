@@ -29,24 +29,6 @@ function cgit_wp_events_activate() {
         wp_die($message);
     }
 
-    /**
-     * Check if cgit-wp-cmb-ukdate is installed
-     */
-    if (!cgit_wp_events_check_cgit_wp_cmb_uk_date()) {
-
-        $message = 'This plugin requires the <code>cgit-cmb-ukdate</code> ';
-        $message.= ' plugin. Please ensure you\'ve installed ';
-        $message.= 'it in the correct location: <code>';
-        $message.= 'plugins/cgit-wp-cmb-ukdate</code><br /><br />When ';
-        $message.= 'download via GitHub\'s web interface, the installation ';
-        $message.= 'directory may be <code>plugins/cgit-wp-cmb-ukdate-master';
-        $message.=  '</code>. Be sure to remove <code>master</code> from the ';
-        $message.= 'directory.<br /><br />Download ';
-        $message.= 'from <a target="_blank" href="https://github.com/';
-        $message.= 'castlegateit/cgit-wp-cmb-ukdate">GitHub</a>';
-        wp_die($message);
-    }
-
     // Set default options
     cgit_wp_events_default_options();
 
@@ -65,19 +47,6 @@ function cgit_wp_events_activate() {
  */
 function cgit_wp_events_check_cmb() {
     return is_plugin_active('Custom-Meta-Boxes/custom-meta-boxes.php');
-}
-
-
-/**
- * Checks that cgit-wp-cmb-ukdate plugin is installed
- *
- * @author Castlgate IT <info@castlegateit.co.uk>
- * @author Andy Reading
- *
- * @return boolean
- */
-function cgit_wp_events_check_cgit_wp_cmb_uk_date() {
-    return is_plugin_active('cgit-wp-cmb-ukdate/cgit-wp-cmb-ukdate.php');
 }
 
 
@@ -112,20 +81,6 @@ function cgit_wp_events_check_installed_plugims() {
             add_action('admin_notices', 'cgit_wp_events_admin_notice_cmb');
         }
 
-        // if cgit-wp-cmb-ukdate is no longer installed...
-        if (!cgit_wp_events_check_cgit_wp_cmb_uk_date()) {
-
-            function cgit_wp_events_admin_notice_ukdate() {
-
-                echo '<div class="error">';
-                echo '    <p>CGIT Event requires <a target="_blank" ';
-                echo 'href="https://github.com/castlegateit/cgit-wp-cmb-ukdate">';
-                echo 'cgit-cmb-ukdate</a> to be installed and will not ';
-                echo 'function correctly without it.</p>';
-                echo '</div>';
-            }
-            add_action('admin_notices', 'cgit_wp_events_admin_notice_ukdate');
-        }
     }
 
 }

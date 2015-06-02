@@ -110,6 +110,13 @@ add_action('init', 'cgit_wp_events_taxonomy');
  */
 function cgit_wp_events_fields($meta_boxes) {
 
+    $date_type = 'date_unix';
+    $types = _cmb_available_fields();
+
+    if (array_key_exists('UK_date', $types)) {
+        $date_type = 'UK_date';
+    }
+
     $fields = array(
 
         array(
@@ -121,7 +128,7 @@ function cgit_wp_events_fields($meta_boxes) {
         array(
             'id' => 'start_date',
             'name' => 'Start Date',
-            'type' => 'UK_date',
+            'type' => $date_type,
             'required' => true,
             'cols' => 2,
         ),
@@ -134,7 +141,7 @@ function cgit_wp_events_fields($meta_boxes) {
         array(
             'id' => 'end_date',
             'name' => 'End Date',
-            'type' => 'UK_date',
+            'type' => $date_type,
             'cols' => 2,
         ),
         array(
