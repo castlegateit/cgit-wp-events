@@ -93,27 +93,13 @@ class Cgit_event_calendar {
     {
         // Set options
         $this->options = array(
-            'format_day' => get_option(
-                'cgit_wp_events_format_day'
-            ),
-            'class_prefix' => get_option(
-                'cgit_wp_events_class_prefix'
-            ),
-            'current_month' => get_option(
-                'cgit_wp_events_format_current_month'
-            ),
-            'format_next_year' => get_option(
-                'cgit_wp_events_format_next_year'
-            ),
-            'format_prev_year' => get_option(
-                'cgit_wp_events_format_prev_year'
-            ),
-            'format_next_month' => get_option(
-                'cgit_wp_events_format_next_month'
-            ),
-            'format_prev_month' => get_option(
-                'cgit_wp_events_format_prev_month'
-            )
+            'format_day' => apply_filters('cgit_wp_events_format_day', 'j'),
+            'class_prefix' => apply_filters('cgit_wp_events_class_prefix', 'cgit-events-'),
+            'current_month' => apply_filters('cgit_wp_events_format_current_month', 'M Y'),
+            'format_next_year' => apply_filters('cgit_wp_events_format_next_year', '&raquo;'),
+            'format_prev_year' => apply_filters('cgit_wp_events_format_prev_year', '&laquo;'),
+            'format_next_month' => apply_filters('cgit_wp_events_format_next_month', '&rsaquo;'),
+            'format_prev_month' => apply_filters('cgit_wp_events_format_prev_month', '&lsaquo;')
         );
     }
 
