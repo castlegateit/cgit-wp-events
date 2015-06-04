@@ -27,6 +27,7 @@ include('post-type.php');
 include('rewrite.php');
 include('query.php');
 include('calendar.php');
+include('widget.php');
 include('ajax.php');
 
 
