@@ -9,6 +9,7 @@ class cgit_wp_events {
         'cgit_wp_events_post_type_support_category' => '1',
         'cgit_wp_events_post_type_support_tag' => '',
         'cgit_wp_events_post_type_support_editor' => '1',
+        'cgit_wp_events_post_type_support_excerpt' => '1',
         'cgit_wp_events_post_type_support_author' => '',
         'cgit_wp_events_post_type_support_thumbnail' => '',
         'cgit_wp_events_post_type_support_comments' => '',
@@ -85,7 +86,7 @@ function cgit_wp_events_render_settings_page() {
 
             <tr>
                 <th rowspan="10">
-                    Enable or disable
+                    Enable
                 </th>
                 <td>
                     <label>
@@ -108,7 +109,16 @@ function cgit_wp_events_render_settings_page() {
                 <td>
                     <label>
                         <input type="checkbox" name="cgit_wp_events_post_type_support_editor" value="1"<?php echo get_option('cgit_wp_events_post_type_support_editor') ? ' checked="checked"' : ''; ?> />
-                        Editor field
+                        Content editor
+                    </label>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>
+                        <input type="checkbox" name="cgit_wp_events_post_type_support_excerpt" value="1"<?php echo get_option('cgit_wp_events_post_type_support_excerpt') ? ' checked="checked"' : ''; ?> />
+                        Excerpt
                     </label>
                 </td>
             </tr>

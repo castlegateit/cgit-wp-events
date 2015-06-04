@@ -25,7 +25,6 @@ function cgit_wp_events_post_type() {
     // Get support from options
     $supports = array(
         'title',
-        'excerpt',
         'revisions'
     );
 
