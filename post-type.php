@@ -117,56 +117,73 @@ function cgit_wp_events_fields($meta_boxes) {
         $date_type = 'UK_date';
     }
 
-    $fields = array(
-
-        array(
-            'id' => 'price',
-            'name' => 'Price',
-            'type' => 'text',
-            'cols' => 2
+    $meta_boxes[] = array(
+        'id' => 'cgit-events-when',
+        'title' => 'When',
+        'pages' => array(CGIT_EVENTS_POST_TYPE),
+        'context' => 'side',
+        'fields' => array(
+            array(
+                'id' => 'start_date',
+                'name' => 'Start Date',
+                'type' => $date_type,
+                'required' => true,
+            ),
+            array(
+                'id' => 'start_time',
+                'name' => 'Start Time',
+                'type' => 'time',
+            ),
+            array(
+                'id' => 'end_date',
+                'name' => 'End Date',
+                'type' => $date_type,
+            ),
+            array(
+                'id' => 'end_time',
+                'name' => 'End Time',
+                'type' => 'time',
+            ),
+            array(
+                'id' => 'all_day',
+                'name' => 'All day event?',
+                'type' => 'select',
+                'options' => array(
+                    0 => 'No',
+                    1 => 'Yes',
+                ),
+            ),
         ),
-        array(
-            'id' => 'start_date',
-            'name' => 'Start Date',
-            'type' => $date_type,
-            'required' => true,
-            'cols' => 2,
-        ),
-        array(
-            'id' => 'start_time',
-            'name' => 'Start Time',
-            'type' => 'time',
-            'cols' => 2,
-        ),
-        array(
-            'id' => 'end_date',
-            'name' => 'End Date',
-            'type' => $date_type,
-            'cols' => 2,
-        ),
-        array(
-            'id' => 'end_time',
-            'name' => 'End Time',
-            'type' => 'time',
-            'cols' => 2,
-        ),
-        array(
-            'id' => 'location_name',
-            'name' => 'Location name',
-            'type' => 'text',
-            'cols' => 2
-        )
     );
 
-    $meta_box = array(
-        'id' => 'cgit-events',
-        'title' => 'Event',
-        'pages' => array('event'),
+    $meta_boxes[] = array(
+        'id' => 'cgit-events-where',
+        'title' => 'Where',
+        'pages' => array(CGIT_EVENTS_POST_TYPE),
         'context' => 'normal',
-        'fields' => $fields,
+        'fields' => array(
+            array(
+                'id' => 'location_name',
+                'name' => 'Location name',
+                'type' => 'text',
+            ),
+            array(
+                'id' => 'address',
+                'name' => 'Address',
+                'type' => 'textarea',
+            ),
+            array(
+                'id' => 'location',
+                'name' => 'Location',
+                'type' => 'gmap',
+            ),
+            array(
+                'id' => 'price',
+                'name' => 'Price',
+                'type' => 'text',
+            ),
+        ),
     );
-
-    $meta_boxes[] = $meta_box;
 
     return $meta_boxes;
 
