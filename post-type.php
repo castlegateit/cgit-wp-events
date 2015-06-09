@@ -204,7 +204,7 @@ add_filter('cmb_meta_boxes', 'cgit_wp_events_fields');
  */
 function cgit_wp_events_save_post($post_id) {
 
-    if (get_post_type($post_id) != CGIT_EVENTS_POST_TYPE) {
+    if (get_post_type($post_id) != CGIT_EVENTS_POST_TYPE || !isset($_POST['start_date'])) {
         return;
     }
 
