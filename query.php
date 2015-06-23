@@ -208,7 +208,7 @@ function cgit_wp_events_query_main_listing($query) {
      */
     $query->set('meta_query', array(
         array(
-            'key' => 'start_date',
+            'key' => 'end_date',
             'value' => $now->format('U'),
             'type' => 'NUMERIC',
             'compare' => '>='
