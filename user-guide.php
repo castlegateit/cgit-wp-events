@@ -17,3 +17,8 @@
     }
 
 ?></p>
+
+<figure>
+    <img src="<?php echo plugin_dir_url(__FILE__); ?>images/fields.png" alt="" />
+    <figcaption>Events have more fields than posts or pages. The &ldquo;Where&rdquo; fields let you add information about the location of the event. The &ldquo;When&rdquo; fields let you add information about the time, date, and duration of the event.</figcaption>
+</figure>
