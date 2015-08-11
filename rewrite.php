@@ -1,6 +1,33 @@
 <?php
 
 /**
+ * Check for the existence of the rewrite rules on each page load and flushes
+ * the rules if they do not exist.
+ *
+ * @author Castlgate IT <info@castlegateit.co.uk>
+ * @author Andy Reading
+ *
+ * @return void
+ */
+function cgit_wp_events_apply_rules() {
+
+    global $wp_rewrite;
+
+    // Get the post type for the archive slug and check it has an archive
+    $post_type = get_post_type_object(CGIT_EVENTS_POST_TYPE);
+    if (!$post_type->has_archive) {
+        return;
+    }
+
+    // Check for the main rewrite rule and flush if it does not exist
+    $check_rule = $post_type->rewrite['slug'] . '/?$';
+    if (in_array($check_rule, array_keys($wp_rewrite->wp_rewrite_rules()))) {
+        cgit_wp_events_flush_rules();
+    }
+}
+add_filter('init', 'cgit_wp_events_apply_rules');
+
+/**
  * Setup date archives rewrite rules for the custom post type.
  *
  * @param array $existing_rules Existing WP rewrite rules
@@ -11,7 +38,6 @@
  * @return array
  */
 function cgit_wp_events_generate_archives($existing_rules) {
-
     global $wp_rewrite;
 
     $rules = array();

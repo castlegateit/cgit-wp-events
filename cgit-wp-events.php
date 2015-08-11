@@ -22,10 +22,10 @@ define('CGIT_EVENTS_POST_TYPE_CATEGORY', 'event-category');
  * Include
  */
 include('admin-options.php');
-include('activation.php');
 include('post-type.php');
 include('rewrite.php');
 include('query.php');
+include('activation.php');
 include('calendar.php');
 include('widget.php');
 include('ajax.php');
