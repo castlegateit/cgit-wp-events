@@ -27,6 +27,7 @@ function cgit_wp_events_apply_rules() {
 }
 add_filter('init', 'cgit_wp_events_apply_rules');
 
+
 /**
  * Setup date archives rewrite rules for the custom post type.
  *
@@ -103,7 +104,7 @@ function cgit_wp_events_generate_archives($existing_rules) {
     }
 
     // Return the rules
-    return $existing_rules + $rules;
+    return $rules + $existing_rules;
 }
 add_filter('rewrite_rules_array', 'cgit_wp_events_generate_archives');
 
