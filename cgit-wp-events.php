@@ -44,7 +44,7 @@ register_uninstall_hook(__FILE__, 'cgit_wp_events_uninstall');
 function cgit_wp_events_user_guide($sections) {
 
     $file = dirname(__FILE__) . '/user-guide.php';
-    $sections['cgit-wp-events'] = cgit_get_user_guide($file);
+    $sections['cgit-wp-events'] = Cgit\UserGuide::getFile($file);
 
     return $sections;
 
