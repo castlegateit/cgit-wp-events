@@ -30,9 +30,18 @@ function cgit_events_calendar_callback() {
 
     if (isset($_POST['year']) && isset($_POST['month'])) {
 
+        $year = (int)$_POST['year'];
+        $month = (int)$_POST['month'];
+
+        // Prevent infinite indexing of calendar pages by restricting display
+        // to fifteen year in the past/future
+        if ($year > date('Y') + 15 || $year < date('Y') - 15) {
+            $year = date('Y');
+        }
+
         $calendar = new Cgit_event_calendar(
-            $_POST['year'],
-            $_POST['month']
+            $year,
+            $month
         );
 
         echo json_encode($calendar->get_ajax());

@@ -69,6 +69,12 @@ function cgit_wp_events_calendar() {
     $year = isset($_GET['cgit-year']) ? $_GET['cgit-year'] : date('Y');
     $month = isset($_GET['cgit-month']) ? $_GET['cgit-month'] : date('m');
 
+    // Prevent infinite indexing of calendar pages by restricting display to
+    // fifteen year in the past/future
+    if ($year > date('Y') + 15 || $year < date('Y') - 15) {
+        $year = date('Y');
+    }
+
     // New calendar instance
     $events_calendar = new Cgit_event_calendar($year, $month);
 
