@@ -14,10 +14,8 @@ jQuery(document).ready(function($){
         $('.cgit-events-calendar').data('cgit-events-year', response.year);
         $('.cgit-events-calendar').data('cgit-events-month', response.month);
         $('.cgit-events-current span').html(response.current);
-            console.log(response);
 
         $('.cgit-events-calendar tbody td').each(function(index, element){
-            $(this).children('span').html(response.days[index].date).attr('class', '');
             $(this).children('a').html(response.days[index].date).attr('class', '');
             $(this).children('a').attr('href', response.days[index].link);
             if (response.days[index].events.length == 1) {
