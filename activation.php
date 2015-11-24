@@ -11,80 +11,12 @@
  */
 function cgit_wp_events_activate() {
 
-    /**
-     * Check if custom-meta-boxes plugin is installed
-     */
-    if (!cgit_wp_events_check_cmb()) {
-
-        $message = 'This plugin requires the <code>Custom-Meta-Boxes</code> ';
-        $message.= ' plugin. Please ensure you\'ve installed ';
-        $message.= 'it in the correct location: <code>';
-        $message.= 'plugins/Custom-Meta-Boxes</code><br /><br />When ';
-        $message.= 'download via GitHub\'s web interface, the installation ';
-        $message.= 'directory may be <code>plugins/Custom-Meta-Boxes-master';
-        $message.=  '</code>. Be sure to remove <code>master</code> from the ';
-        $message.= 'directory.<br /><br />Download ';
-        $message.= 'from <a target="_blank" href="https://github.com/humanmade';
-        $message.= '/Custom-Meta-Boxes">GitHub</a>';
-        wp_die($message);
-    }
-
     // Set default options
     cgit_wp_events_default_options();
 
     // Flush rewrite rules
     add_filter('wp_loaded', 'cgit_wp_events_flush_rules');
 }
-
-
-/**
- * Checks that custom-meta-boxes is installed
- *
- * @author Castlgate IT <info@castlegateit.co.uk>
- * @author Andy Reading
- *
- * @return boolean
- */
-function cgit_wp_events_check_cmb() {
-    return is_plugin_active('Custom-Meta-Boxes/custom-meta-boxes.php');
-}
-
-
-/**
- * Configure warning notices on the admin screens if one or more required
- * plugins have been deactivated or deleted.
- *
- * @author Castlgate IT <info@castlegateit.co.uk>
- * @author Andy Reading
- *
- * @return void
- */
-function cgit_wp_events_check_installed_plugims() {
-
-    global $default_options;
-
-    // Only display warnings to those who can manage plugins
-    if (current_user_can('install_plugins')) {
-
-        // If custom-meta-boxes is no longer installed...
-        if (!cgit_wp_events_check_cmb()) {
-
-            function cgit_wp_events_admin_notice_cmb() {
-
-                echo '<div class="error">';
-                echo '    <p>CGIT Event requires <a target="_blank" ';
-                echo 'href="https://github.com/humanmade/Custom-Meta-Boxes">';
-                echo 'Custom Meta Boxes</a> to be installed and will not ';
-                echo 'function correctly without it.</p>';
-                echo '</div>';
-            }
-            add_action('admin_notices', 'cgit_wp_events_admin_notice_cmb');
-        }
-
-    }
-
-}
-add_action('admin_init', 'cgit_wp_events_check_installed_plugims');
 
 
 /**
