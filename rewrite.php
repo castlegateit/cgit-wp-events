@@ -21,7 +21,8 @@ function cgit_wp_events_apply_rules() {
 
     // Check for the main rewrite rule and flush if it does not exist
     $check_rule = $post_type->rewrite['slug'] . '/?$';
-    if (in_array($check_rule, array_keys($wp_rewrite->wp_rewrite_rules()))) {
+    $rules = $wp_rewrite->wp_rewrite_rules();
+    if ($rules && in_array($check_rule, array_keys($rules))) {
         cgit_wp_events_flush_rules();
     }
 }
