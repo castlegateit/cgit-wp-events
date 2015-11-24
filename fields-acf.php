@@ -35,6 +35,15 @@ acf_add_local_field_group(array(
             'name' => 'start_time',
             'label' => 'Start time',
             'type' => 'text',
+            'conditional_logic' => array(
+                array(
+                    array(
+                        'field' => 'all_day',
+                        'operator' => '!=',
+                        'value' => '1',
+                    ),
+                ),
+            ),
         ),
         array(
             'key' => 'end_date',
@@ -47,6 +56,15 @@ acf_add_local_field_group(array(
             'name' => 'end_time',
             'label' => 'End time',
             'type' => 'text',
+            'conditional_logic' => array(
+                array(
+                    array(
+                        'field' => 'all_day',
+                        'operator' => '!=',
+                        'value' => '1',
+                    ),
+                ),
+            ),
         ),
         array(
             'key' => 'all_day',
