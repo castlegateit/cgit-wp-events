@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * Add custom fields using Custom Meta Boxes
+ *
+ * Custom Meta Boxes uses filters to add fields, so these definitions will be
+ * ignored safely if the Custom Meta Boxes plugin is not installed.
+ */
+
+
+/**
  * Add custom meta box fields for our events
  *
  * @todo We ought to make UK_date use datetimes rather than unix timestamps

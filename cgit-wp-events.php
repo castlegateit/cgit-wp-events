@@ -23,7 +23,8 @@ define('CGIT_EVENTS_POST_TYPE_CATEGORY', 'event-category');
  */
 include('admin-options.php');
 include('post-type.php');
-include('fields.php');
+include('fields-cmb.php');
+include('fields-acf.php');
 include('rewrite.php');
 include('query.php');
 include('activation.php');
