@@ -1,6 +1,6 @@
 # Castlegate IT WP Events #
 
-An events management plugin for WordPress. Installing and activating the plugin will create an event post type, which is available to users in the WordPress admin panel. If either [Advanced Custom Fields](http://www.advancedcustomfields.com/) or [Human Made Custom Meta Boxes plugin](https://github.com/humanmade/Custom-Meta-Boxes) is installed, this plugin will provide relevant fields for event dates, times, locations, and prices. It also defines category and tag taxonomies.
+An events management plugin for WordPress, using the [Human Made Custom Meta Boxes plugin](https://github.com/humanmade/Custom-Meta-Boxes). Installing and activating the plugin will create an event post type, which is available to users in the WordPress admin panel. The plugin provides relevant fields for event dates, times, locations, and prices. It also defines category and tag taxonomies.
 
 ## Events ##
 
@@ -32,4 +32,4 @@ If your theme supports widgets, the events calendar can also be added as a widge
 
 ## UK dates ##
 
-If the [CMB UK date field plugin](https://github.com/castlegateit/cgit-wp-cmb-ukdate) plugin is installed and you are using the Custom Meta Boxes plugin, the start and end dates will use that field type. If not, they will use the standard Unix date field.
+If the [CMB UK date field plugin](https://github.com/castlegateit/cgit-wp-cmb-ukdate) plugin is installed, the start and end dates will use that field type. If not, they will use the standard Unix date field.
