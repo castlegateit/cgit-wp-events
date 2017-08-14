@@ -5,7 +5,7 @@ Plugin Name: Castlegate IT WP Events
 Plugin URI: https://github.com/castlegateit/cgit-wp-events/
 Description: A simple and easy to use events interface with complete developer
 control.
-Version: 1.2
+Version: 1.2.1
 Author: Castlegate IT
 Author URI: http://www.castlegateit.co.uk/
 */
