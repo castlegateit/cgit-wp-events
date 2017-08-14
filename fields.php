@@ -15,7 +15,7 @@ function cgit_wp_events_fields($meta_boxes) {
     $date_type = 'date_unix';
     $types = _cmb_available_fields();
 
-    if (array_key_exists('UK_date', $types)) {
+    if (array_key_exists('UK_date', $types) || is_plugin_active('cgit-wp-cmb-ukdate/cgit-wp-cmb-ukdate.php')) {
         $date_type = 'UK_date';
     }
 
