@@ -330,16 +330,16 @@ class Cgit_event_calendar {
 
                 FROM_UNIXTIME(start_meta.meta_value) AS event_start,
                 FROM_UNIXTIME(end_meta.meta_value) AS event_end,
-                wp_posts.*
+                " . $wpdb->prefix . "posts.*
 
-            FROM `wp_posts`
+            FROM `" . $wpdb->prefix . "posts`
 
-            LEFT JOIN `wp_postmeta` start_meta
-                ON `wp_posts`.`ID` = `start_meta`.`post_id`
+            LEFT JOIN `" . $wpdb->prefix . "postmeta` start_meta
+                ON `" . $wpdb->prefix . "posts`.`ID` = `start_meta`.`post_id`
                     AND start_meta.meta_key = 'start_date'
 
-            LEFT JOIN `wp_postmeta` end_meta
-                ON `wp_posts`.`ID` = `end_meta`.`post_id`
+            LEFT JOIN `" . $wpdb->prefix . "postmeta` end_meta
+                ON `" . $wpdb->prefix . "posts`.`ID` = `end_meta`.`post_id`
                     AND end_meta.meta_key = 'end_date'
 
             WHERE
@@ -362,7 +362,7 @@ class Cgit_event_calendar {
                     )
                 )
 
-            GROUP BY `wp_posts`.`ID`"
+            GROUP BY `" . $wpdb->prefix . "posts`.`ID`"
         );
 
 
