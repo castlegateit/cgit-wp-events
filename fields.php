@@ -11,7 +11,6 @@
  * @return array
  */
 function cgit_wp_events_fields($meta_boxes) {
-
     $date_type = 'date_unix';
     $types = _cmb_available_fields();
 
@@ -58,6 +57,10 @@ function cgit_wp_events_fields($meta_boxes) {
         ),
     );
 
+    if (!defined('CGIT_EVENTS_GMAP_API_KEY')) {
+        define('CGIT_EVENTS_GMAP_API_KEY', false);
+    }
+
     $meta_boxes[] = array(
         'id' => 'cgit-events-where',
         'title' => 'Where',
@@ -78,6 +81,7 @@ function cgit_wp_events_fields($meta_boxes) {
                 'id' => 'location',
                 'name' => 'Location',
                 'type' => 'gmap',
+                'google_api_key' => CGIT_EVENTS_GMAP_API_KEY
             ),
             array(
                 'id' => 'price',
