@@ -5,7 +5,7 @@ Plugin Name: Castlegate IT WP Events
 Plugin URI: https://github.com/castlegateit/cgit-wp-events/
 Description: A simple and easy to use events interface with complete developer
 control.
-Version: 1.2.3
+Version: 1.2.5
 Author: Castlegate IT
 Author URI: http://www.castlegateit.co.uk/
 */
@@ -45,7 +45,10 @@ register_uninstall_hook(__FILE__, 'cgit_wp_events_uninstall');
 function cgit_wp_events_user_guide($sections) {
 
     $file = dirname(__FILE__) . '/user-guide.php';
-    $sections['cgit-wp-events'] = Cgit\UserGuide::getFile($file);
+    $sections['cgit-wp-events'] = [
+        'heading' => 'Events',
+        'content' => Cgit\UserGuide::getFile($file)
+    ];
 
     return $sections;
 
